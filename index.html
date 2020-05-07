@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixar Arquivo JS</title>
+</head>
+<body>
+    
+    <script>
+        let conteudoTxt = 'oi eu sou o Renan'
+        let nomeArquivo = 'teste-renan'
+        let tipo = 'text'
+
+        download(conteudoTxt, nomeArquivo, tipo)
+
+        function download(conteudo, nomeArquivo, tipo){
+            if(!tipo){
+                tipo = 'application/octet-stream'
+            }
+
+            let a    = document.createElement('a')
+            let blob = new Blob([conteudo], {'type':tipo})
+
+            a.href = window.URL.createObjectURL(blob)
+            a.download = nomeArquivo
+            a.click()
+        }
+    </script>
+</body>
+</html>
